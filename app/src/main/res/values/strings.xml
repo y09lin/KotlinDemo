@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">KotlinDemo</string>
+    <string name="app_name">靠它灵</string>
+
+    <string name="button_navigation_home_text">首页</string>
+    <string name="button_navigation_girl_text">福利</string>
+    <string name="button_navigation_read_text">闲读</string>
+    <string name="button_navigation_video_text">视频</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

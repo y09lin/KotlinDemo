@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_navigation_home"
+        android:checked="true"
+        android:icon="@drawable/ic_navigation_home"
+        android:title="@string/button_navigation_home_text"/>
+
+    <item
+        android:id="@+id/item_navigation_read"
+        android:icon="@drawable/ic_navigation_read"
+        android:title="@string/button_navigation_read_text"/>
+
+    <item
+        android:id="@+id/item_navigation_girl"
+        android:icon="@drawable/ic_navigation_girl"
+        android:title="@string/button_navigation_girl_text"/>
+
+    <item
+        android:id="@+id/item_navigation_video"
+        android:icon="@drawable/ic_navigation_video"
+        android:title="@string/button_navigation_video_text"/>
+
+</menu>
