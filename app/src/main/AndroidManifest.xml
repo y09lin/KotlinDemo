@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".gank.activity.GankMain" />
+            android:name=".gank.activity.GankMain"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

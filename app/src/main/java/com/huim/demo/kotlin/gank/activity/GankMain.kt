@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.huim.demo.kotlin.R
 import com.huim.demo.kotlin.gank.fragment.GankTab
+import com.huim.demo.kotlin.gank.fragment.ReadFrag
 import kotlinx.android.synthetic.main.act_gank_main.*
 
 class GankMain : AppCompatActivity() {
     var tagFrag:GankTab ? =null
+    var readFrag:ReadFrag ? =null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +34,7 @@ class GankMain : AppCompatActivity() {
                     setDefaultFragment(3)
                 }
             }
-            false
+            true
         }
         setDefaultFragment(0)
     }
@@ -49,11 +51,11 @@ class GankMain : AppCompatActivity() {
                 }
             }
             1->{
-                if (tagFrag==null){
-                    tagFrag=GankTab.newInstance("","")
-                    ft.add(R.id.layout_content,tagFrag)
+                if (readFrag==null){
+                    readFrag=ReadFrag.newInstance("","")
+                    ft.add(R.id.layout_content,readFrag)
                 }else{
-                    ft.show(tagFrag)
+                    ft.show(readFrag)
                 }
             }
             2->{
@@ -65,11 +67,11 @@ class GankMain : AppCompatActivity() {
                 }
             }
             3->{
-                if (tagFrag==null){
-                    tagFrag=GankTab.newInstance("","")
-                    ft.add(R.id.layout_content,tagFrag)
+                if (readFrag==null){
+                    readFrag=ReadFrag.newInstance("","")
+                    ft.add(R.id.layout_content,readFrag)
                 }else{
-                    ft.show(tagFrag)
+                    ft.show(readFrag)
                 }
             }
         }

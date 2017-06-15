@@ -16,8 +16,8 @@ class ReadFrag :Fragment(){
     companion object {
         private val ARG_PARAM1 = "param1"
 
-        fun newInstance(param1: String, param2: String): GankTab {
-            val fragment = GankTab()
+        fun newInstance(param1: String, param2: String): ReadFrag {
+            val fragment = ReadFrag()
             val args = Bundle()
             args.putString(ARG_PARAM1, param1)
             fragment.arguments = args
