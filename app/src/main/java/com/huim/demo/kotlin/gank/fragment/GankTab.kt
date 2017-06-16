@@ -36,6 +36,8 @@ class GankTab : Fragment() {
         titles.indices
                 .map { titles[it] }
                 .forEach { adapter.addTab(it,GankFrag::class.java,getBundle(it)) }
+        pager_gank.offscreenPageLimit=titles.size
+        adapter.notifyDataSetChanged()
 
         return view
     }

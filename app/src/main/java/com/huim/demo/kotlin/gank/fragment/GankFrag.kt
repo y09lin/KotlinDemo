@@ -1,5 +1,6 @@
 package com.huim.demo.kotlin.gank.fragment
 
+import android.os.Bundle
 import android.support.v4.app.Fragment
 
 /**
@@ -9,5 +10,11 @@ import android.support.v4.app.Fragment
 class GankFrag :Fragment(){
     companion object{
         public val GANK_TYPE="gank_type"
+    }
+
+    private var mType:String?=null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
     }
 }
