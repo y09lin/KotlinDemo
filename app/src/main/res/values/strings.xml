@@ -8,4 +8,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="home_viewpage_arrays">
+        <item>Android</item>
+        <item>iOS</item>
+        <item>前端</item>
+        <item>App</item>
+        <item>拓展资源</item>
+        <item>瞎推荐</item>
+    </string-array>
 </resources>

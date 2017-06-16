@@ -1,14 +1,13 @@
 package com.huim.demo.kotlin.gank.fragment
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.huim.demo.kotlin.R
+import com.huim.demo.kotlin.gank.adapter.ViewPageFragmentAdapter
+import kotlinx.android.synthetic.main.frag_gank_tab.*
 
 /**
  * gank首页
@@ -17,8 +16,6 @@ class GankTab : Fragment() {
 
     private var mParam1: String? = null
     private var mParam2: String? = null
-
-    private var mListener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,32 +27,23 @@ class GankTab : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.frag_gank_tab, container, false)
+        val view=inflater!!.inflate(R.layout.frag_gank_tab, container, false)
+        val adapter:ViewPageFragmentAdapter= ViewPageFragmentAdapter(childFragmentManager,context)
+        pager_gank.adapter=adapter
+        tab_gank.setupWithViewPager(pager_gank)
+
+        val titles=resources.getStringArray(R.array.home_viewpage_arrays)
+        titles.indices
+                .map { titles[it] }
+                .forEach { adapter.addTab(it,GankFrag::class.java,getBundle(it)) }
+
+        return view
     }
 
-    fun onButtonPressed(uri: Uri) {
-        if (mListener != null) {
-            mListener!!.onFragmentInteraction(uri)
-        }
-    }
-
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-//        if (context is OnFragmentInteractionListener) {
-//            mListener = context as OnFragmentInteractionListener?
-//        } else {
-//            throw RuntimeException(context!!.toString() + " must implement OnFragmentInteractionListener")
-//        }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        mListener = null
-    }
-
-    interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
+    fun getBundle(s:String):Bundle{
+        val b=Bundle()
+        b.putString(GankFrag.GANK_TYPE,s)
+        return b
     }
 
     companion object {
