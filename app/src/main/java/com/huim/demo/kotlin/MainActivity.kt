@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        IntentUtils.go2GankMain(this)
+        IntentUtils.go2Activity(this,"com.huim.demo.kotlin.flotview.Floatinglauncher")
     }
 
 

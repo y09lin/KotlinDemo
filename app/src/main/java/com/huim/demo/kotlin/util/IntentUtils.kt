@@ -9,7 +9,17 @@ import android.content.Intent
  */
 object IntentUtils {
     fun go2GankMain(context: Context){
-        var intent= Intent(context, Class.forName("com.huim.demo.kotlin.phone.activity.PhoneStatusActivity"))
+        val intent= Intent(context, Class.forName("com.huim.demo.kotlin.gank.activity.GankMain"))
+        context.startActivity(intent)
+    }
+
+    fun go2PhoneStatus(context: Context){
+        val intent= Intent(context, Class.forName("com.huim.demo.kotlin.phone.activity.PhoneStatusActivity"))
+        context.startActivity(intent)
+    }
+
+    fun go2Activity(context: Context,className: String){
+        val intent=Intent(context, Class.forName(className))
         context.startActivity(intent)
     }
 }

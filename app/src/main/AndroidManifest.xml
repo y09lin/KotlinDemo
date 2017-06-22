@@ -20,10 +20,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- gankio -->
         <activity
             android:name=".gank.activity.GankMain"
             android:theme="@style/AppTheme" />
-        <activity android:name=".phone.activity.PhoneStatusActivity"></activity>
+        <!-- phone -->
+        <activity android:name=".phone.activity.PhoneStatusActivity"/>
+        <!-- floating launcher -->
+        <activity android:name=".flotview.Floatinglauncher"/>
+        <activity android:name=".flotview.ConfigActivity"/>
+        <service android:name=".flotview.FloatingService"/>
     </application>
 
 </manifest>

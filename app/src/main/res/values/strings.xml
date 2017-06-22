@@ -17,4 +17,9 @@
         <item>拓展资源</item>
         <item>瞎推荐</item>
     </string-array>
+
+    <!-- floating launcher -->
+    <string name="start_service">Start Service</string>
+    <string name="stop_service">Stop Service</string>
+    <string name="configuration">Configuration</string>
 </resources>
