@@ -13,6 +13,4 @@ class MainActivity : AppCompatActivity() {
         IntentUtils.go2Activity(this, "com.huim.demo.kotlin.flotview.Floatinglauncher")
         finish()
     }
-
-
 }
