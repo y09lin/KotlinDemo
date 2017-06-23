@@ -1,0 +1,13 @@
+<resources>
+    <string-array name="demo_names">
+        <item>Gank io</item>
+        <item>Floating Launcher</item>
+        <item>Phone State Listener</item>
+    </string-array>
+    <string-array name="demo_class">
+        <item>com.huim.demo.kotlin.gank.activity.GankMain</item>
+        <item>com.huim.demo.kotlin.flotview.Floatinglauncher</item>
+        <item>com.huim.demo.kotlin.phone.activity.PhoneStatusActivity</item>
+    </string-array>
+
+</resources>

@@ -6,7 +6,6 @@
     <string name="button_navigation_read_text">闲读</string>
     <string name="button_navigation_video_text">视频</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="home_viewpage_arrays">

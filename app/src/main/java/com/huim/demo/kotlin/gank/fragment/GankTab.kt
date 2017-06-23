@@ -29,15 +29,18 @@ class GankTab : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view=inflater!!.inflate(R.layout.frag_gank_tab, container, false)
         val adapter:ViewPageFragmentAdapter= ViewPageFragmentAdapter(childFragmentManager,context)
-        pager_gank.adapter=adapter
-        tab_gank.setupWithViewPager(pager_gank)
+        try {
+            pager_gank.adapter=adapter
+            tab_gank.setupWithViewPager(pager_gank)
 
-        val titles=resources.getStringArray(R.array.home_viewpage_arrays)
-        titles.indices
-                .map { titles[it] }
-                .forEach { adapter.addTab(it,GankFrag::class.java,getBundle(it)) }
-        pager_gank.offscreenPageLimit=titles.size
-        adapter.notifyDataSetChanged()
+            val titles=resources.getStringArray(R.array.home_viewpage_arrays)
+            titles.indices
+                    .map { titles[it] }
+                    .forEach { adapter.addTab(it,GankFrag::class.java,getBundle(it)) }
+            pager_gank.offscreenPageLimit=titles.size
+            adapter.notifyDataSetChanged()
+        } catch(e: Exception) {
+        }
 
         return view
     }

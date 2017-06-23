@@ -22,4 +22,8 @@ object IntentUtils {
         val intent=Intent(context, Class.forName(className))
         context.startActivity(intent)
     }
+
+    fun go2Activity(context: Context,cls:Class<*>){
+        context.startActivity(Intent(context,cls))
+    }
 }

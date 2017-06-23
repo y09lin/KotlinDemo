@@ -20,14 +20,14 @@ class Floatinglauncher : AppCompatActivity(){
 
     private fun initViews() {
         btn_start.setOnClickListener {
-            startService(Intent(this, Class.forName("com.huim.demo.kotlin.flotview.FloatingService")))
+            startService(Intent(this, FloatingService::class.java))
         }
         btn_stop.setOnClickListener {
-            stopService(Intent(this, Class.forName("com.huim.demo.kotlin.flotview.FloatingService")))
+            stopService(Intent(this, FloatingService::class.java))
         }
         btn_config.setOnClickListener {
-            stopService(Intent(this, Class.forName("com.huim.demo.kotlin.flotview.FloatingService")))
-            startActivity(Intent(this, Class.forName("com.huim.demo.kotlin.flotview.ConfigActivity")))
+            stopService(Intent(this, FloatingService::class.java))
+            startActivity(Intent(this, ConfigActivity::class.java))
         }
     }
 }
