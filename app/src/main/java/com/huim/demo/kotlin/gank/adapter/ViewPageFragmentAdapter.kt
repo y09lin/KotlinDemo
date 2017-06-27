@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
+import com.huim.demo.kotlin.gank.fragment.GankFrag
 
 /**
  * gank tab adapter
@@ -20,7 +21,8 @@ class ViewPageFragmentAdapter(fm: FragmentManager?,context: Context) : FragmentS
 
     override fun getItem(position: Int): Fragment {
         val info:TabPageInfo=mTabs.get(position)
-        return Fragment.instantiate(mContext,info.title,info.args)
+//        return Fragment.instantiate(mContext,info.title,info.args)
+        return GankFrag.newInstance(mContext,info.title,info.args)
     }
 
     fun addTab(title: String,clazz: Class<*>,args: Bundle){

@@ -1,13 +1,14 @@
 package com.huim.demo.kotlin.gank.fragment
 
 import android.os.Bundle
+import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
+import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.huim.demo.kotlin.R
 import com.huim.demo.kotlin.gank.adapter.ViewPageFragmentAdapter
-import kotlinx.android.synthetic.main.frag_gank_tab.*
 
 /**
  * gank首页
@@ -30,16 +31,24 @@ class GankTab : Fragment() {
         val view=inflater!!.inflate(R.layout.frag_gank_tab, container, false)
         val adapter:ViewPageFragmentAdapter= ViewPageFragmentAdapter(childFragmentManager,context)
         try {
-            pager_gank.adapter=adapter
-            tab_gank.setupWithViewPager(pager_gank)
-
             val titles=resources.getStringArray(R.array.home_viewpage_arrays)
-            titles.indices
-                    .map { titles[it] }
-                    .forEach { adapter.addTab(it,GankFrag::class.java,getBundle(it)) }
+            for (i in titles.indices){
+                adapter.addTab(titles[i],GirlFrag::class.java,getBundle(titles[i]))
+            }
+            val pager_gank= view.findViewById(R.id.pager_gank) as ViewPager
+            val tab_gank=view.findViewById(R.id.tab_gank) as TabLayout
+            pager_gank.adapter=adapter
             pager_gank.offscreenPageLimit=titles.size
+            tab_gank.setupWithViewPager(pager_gank)
             adapter.notifyDataSetChanged()
+            var i=0
+            while (i<tab_gank.tabCount){
+                val tab:TabLayout.Tab= tab_gank.getTabAt(i)!!
+                tab.text = titles[i]
+                i++
+            }
         } catch(e: Exception) {
+            e.printStackTrace()
         }
 
         return view
