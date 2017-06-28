@@ -33,7 +33,7 @@ class GankTab : Fragment() {
         try {
             val titles=resources.getStringArray(R.array.home_viewpage_arrays)
             for (i in titles.indices){
-                adapter.addTab(titles[i],GirlFrag::class.java,getBundle(titles[i]))
+                adapter.addTab(titles[i],GankFrag::class.java,getBundle(titles[i]))
             }
             val pager_gank= view.findViewById(R.id.pager_gank) as ViewPager
             val tab_gank=view.findViewById(R.id.tab_gank) as TabLayout

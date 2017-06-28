@@ -21,7 +21,6 @@ class ViewPageFragmentAdapter(fm: FragmentManager?,context: Context) : FragmentS
 
     override fun getItem(position: Int): Fragment {
         val info:TabPageInfo=mTabs.get(position)
-//        return Fragment.instantiate(mContext,info.title,info.args)
         return GankFrag.newInstance(mContext,info.title,info.args)
     }
 

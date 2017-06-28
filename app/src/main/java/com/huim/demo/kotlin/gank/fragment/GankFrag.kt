@@ -3,10 +3,18 @@ package com.huim.demo.kotlin.gank.fragment
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.huim.demo.kotlin.R
+import com.huim.demo.kotlin.adapter.MainListAdapter
+import com.huim.demo.kotlin.gank.data.GankDate
+import com.huim.demo.kotlin.gank.net.GankRequestUtils
+import com.huim.demo.sherlockadapter.IMultiItem
+
 
 /**
  * gank fragment
@@ -23,6 +31,7 @@ class GankFrag :Fragment(){
     }
 
     private var mType:String?=null
+    private var mAdapter:MainListAdapter?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +39,30 @@ class GankFrag :Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.frag_gank, container, false)
+        mType=arguments.getString(GANK_TYPE)
+        val view=inflater!!.inflate(R.layout.frag_gank, container, false)
+        val list=view.findViewById(R.id.list)as RecyclerView
+        val mGridLayoutManager= GridLayoutManager(activity,1)
+        list.layoutManager=mGridLayoutManager
+        mAdapter= MainListAdapter()
+        list.adapter=mAdapter
+        getData()
+        return view
+    }
+
+    private fun getData() {
+        GankRequestUtils.requestGankByType(activity,mType!!,1,object:GankRequestUtils.GankTypeListener{
+            override fun onError() {
+            }
+
+            override fun onGetData(list: List<IMultiItem>) {
+                mAdapter!!.data=list
+
+                list.indices
+                        .map { list[it] as GankDate }
+                        .forEach { Log.d("Gank", it.desc) }
+            }
+
+        })
     }
 }
