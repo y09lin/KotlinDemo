@@ -1,5 +1,6 @@
 package com.huim.demo.kotlin.gank.data
 
+import android.content.Context
 import android.text.TextUtils
 import android.view.View
 import com.bumptech.glide.Glide
@@ -18,6 +19,11 @@ class GankDate : IMultiItem, IFullSpan {
     var url:String?= null
     var who:String?= null
     var images:List<String>? = null
+    var mContext:Context ?=null
+
+    fun setContext(context: Context){
+        mContext=context
+    }
 
     override fun isFullSpan(): Boolean {
         return true
@@ -41,14 +47,9 @@ class GankDate : IMultiItem, IFullSpan {
             holder.setVisibility(R.id.iv_home_gank_img, View.VISIBLE)
             val iv=holder.findImage(R.id.iv_home_gank_img)
             val imageUrl=images!![0]
-            Glide.with(iv)
+            Glide.with(mContext)
                     .load("$imageUrl?imageView2/0/w/400")
                     .into(iv)
-
-//                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-//                    .error(R.color.accent)
-//                    .crossFade()
-//                    .into
         }else{
             holder.setVisibility(R.id.iv_home_gank_img, View.GONE)
         }

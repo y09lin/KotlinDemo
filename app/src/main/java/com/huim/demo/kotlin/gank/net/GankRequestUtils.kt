@@ -22,7 +22,7 @@ object GankRequestUtils{
         fun onError()
     }
 
-    fun requestGankByType(avtivity: Activity, type:String, count:Int, page:Int, listener:GankTypeListener){
+    fun requestGankByType(activity: Activity, type:String, count:Int, page:Int, listener:GankTypeListener){
         var num=count
         if (num<=0){
             num = mCount
@@ -33,7 +33,7 @@ object GankRequestUtils{
         val request=Request.Builder().url(url).build()
         client.newCall(request).enqueue(object : Callback{
             override fun onFailure(call: Call, e: IOException) {
-                avtivity.runOnUiThread {
+                activity.runOnUiThread {
                     listener.onError()
                 }
             }
@@ -45,7 +45,10 @@ object GankRequestUtils{
                 val gank=gson.fromJson(result,GankRequestResult::class.java)
                 val list=gank.results
                 if (list!=null){
-                    avtivity.runOnUiThread {
+                    activity.runOnUiThread {
+                        list.iterator().forEach {
+                            it.setContext(activity)
+                        }
                         listener.onGetData(list)
                     }
                 }
