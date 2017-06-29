@@ -37,7 +37,8 @@
             android:id="@+id/tv_home_gank_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_alignParentBottom="true"
             android:textSize="12sp"
             android:textColor="@android:color/darker_gray"/>
@@ -47,6 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_toEndOf="@+id/tv_home_gank_author"
             android:layout_alignParentBottom="true"
             android:textSize="12sp"

@@ -13,18 +13,22 @@ import java.io.IOException
  * Created by huim_lin on 2017/6/28.
  */
 object GankRequestUtils{
-    val baseUrl="http://gank.io/api/data"
-    val count=10
-//    val baseUrl="http://gank.io/api/data/Android/10/1"
+    val mBaseUrl ="http://gank.io/api/data"
+    val mCount =10
+//    val mBaseUrl="http://gank.io/api/data/Android/10/1"
 
     interface GankTypeListener{
         fun onGetData(list:List<IMultiItem>)
         fun onError()
     }
 
-    fun requestGankByType(avtivity: Activity, type:String, page:Int, listener:GankTypeListener){
-        val url="$baseUrl/$type/$count/$page"
-        Log.d("Kotlin",url)
+    fun requestGankByType(avtivity: Activity, type:String, count:Int, page:Int, listener:GankTypeListener){
+        var num=count
+        if (num<=0){
+            num = mCount
+        }
+        val url="$mBaseUrl/$type/$num/$page"
+        Log.d("Gank","Get Gank list by type's url: $url")
         val client=OkHttpClient()
         val request=Request.Builder().url(url).build()
         client.newCall(request).enqueue(object : Callback{
@@ -37,7 +41,6 @@ object GankRequestUtils{
             @Throws(IOException::class)
             override fun onResponse(call: Call, response: Response) {
                 val result=response.body()!!.string()
-                Log.d("Gank",result)
                 val gson=Gson()
                 val gank=gson.fromJson(result,GankRequestResult::class.java)
                 val list=gank.results
