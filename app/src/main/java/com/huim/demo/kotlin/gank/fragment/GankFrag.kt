@@ -1,6 +1,7 @@
 package com.huim.demo.kotlin.gank.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
@@ -11,6 +12,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.huim.demo.kotlin.R
 import com.huim.demo.kotlin.adapter.MainListAdapter
+import com.huim.demo.kotlin.gank.activity.GankWeb
+import com.huim.demo.kotlin.gank.data.GankDate
 import com.huim.demo.kotlin.gank.net.GankRequestUtils
 import com.huim.demo.sherlockadapter.IMultiItem
 
@@ -62,6 +65,11 @@ class GankFrag :Fragment(){
         mAdapter!!.setOnLoadMoreListener {
             page++
             getData(false)
+        }
+        mAdapter!!.setOnItemClickListener { _, adapterPosition ->
+            val intent= Intent(activity,GankWeb::class.java)
+            intent.putExtra(GankWeb.STR_URL,(mAdapter!!.getData(adapterPosition) as GankDate).url)
+            startActivity(intent)
         }
         layout_refresh!!.setOnRefreshListener {
             page=1

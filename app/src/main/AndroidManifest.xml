@@ -25,6 +25,9 @@
         <activity
             android:name=".gank.activity.GankMain"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".gank.activity.GankWeb"
+            android:theme="@style/AppTheme" />
         <!-- phone -->
         <activity android:name=".phone.activity.PhoneStatusActivity"/>
         <!-- floating launcher -->
