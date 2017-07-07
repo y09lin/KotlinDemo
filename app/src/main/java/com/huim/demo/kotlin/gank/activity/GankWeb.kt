@@ -1,6 +1,7 @@
 
 package com.huim.demo.kotlin.gank.activity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -20,16 +21,19 @@ class GankWeb : AppCompatActivity() {
         val STR_URL="str_url"
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.act_gank_web)
 
-        val url=intent.getStringExtra(STR_URL)
-        Log.d("Gank",url)
-        web_gank.loadUrl(url)
+        val strUrl=intent.getStringExtra(STR_URL)
+        Log.d("Gank",strUrl)
+        web_gank.loadUrl(strUrl)
+        web_gank.settings.javaScriptEnabled=true
         web_gank.setWebChromeClient(object : WebChromeClient(){
             override fun onProgressChanged(view: WebView?, newProgress: Int) {
                 super.onProgressChanged(view, newProgress)
+                progress_gank.visibility= View.VISIBLE
                 progress_gank.progress = newProgress
             }
         })
@@ -39,5 +43,13 @@ class GankWeb : AppCompatActivity() {
                 progress_gank.visibility= View.GONE
             }
         })
+    }
+
+    override fun onBackPressed() {
+        if (web_gank.canGoBack()){
+            web_gank.goBack()
+        }else{
+            super.onBackPressed()
+        }
     }
 }
