@@ -24,9 +24,18 @@ android {
 buildscript {
     repositories {
         jcenter()
+        maven {
+            url 'https://maven.google.com'
+        }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs','../project-aar' //this way we can find the .aar file in libs folder
     }
 }
 
